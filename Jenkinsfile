@@ -1,5 +1,8 @@
 pipeline {
   agent any
+    libraries {
+    lib("SharedLibs")
+  }
   stages {
     stage('Say Hello') {
       steps {
@@ -29,6 +32,11 @@ pipeline {
             sleep(time: 20, unit: 'SECONDS')
           }
         }
+        stage('Shared Lib') {
+         steps {
+             helloWorld("Jenkins")
+         }
+      }
       }
     }
   }
